@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title> Ljubedsa Calderon | Diseñador</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
         <header>
@@ -15,48 +15,32 @@
         <main></main>
 
         <script>
-            // vamos a buscar un dartto
-
             var x = new URLSearchParams(window.location.search).get('data');
 
-
-            //unas variables que no varían, que son constantes:
-
             const autoria = document.querySelector("h2");
-
             const principal = document.querySelector("main");
-
-            const seleccion = document.querySelector("select");
-
             const nombre = "Ljubedsa Calderon";
-
-            //noten que hoy uso `` y ${}, en lugar de comillas y concatenaciones
 
             autoria.innerHTML = `Por ${nombre}`;
 
-            //acá voy por el JSON
-
             async function astros() {
-                const consulta = await fetch("https://raw.githubusercontent.com/ljubedsacalderon/dno096-08/refs/heads/main/.phcode.json");
+                const consulta = await fetch("https://raw.githubusercontent.com/ljubedsacalderon/dno096-08/main/.phcode.json");
                 const data = await consulta.json();
                 console.log(data);
 
                 if(x){
-
-                    principal.innerHTML += `<h3>${data[x].nombre}</h3><p>${data[x].fecha}</p><p>${data[x].descripcion}</p><img src="${data[x].foto}">`;
-
+                    principal.innerHTML += `
+                        <h3>${data[x].nombre}</h3>
+                        <p>${data[x].fecha}</p>
+                        <p>${data[x].descripcion}</p>
+                        <img src="${data[x].foto}" alt="${data[x].nombre}">
+                    `;
                 } else {
                     window.location.href = `index.html`;
                 }
-
             }
 
             astros().catch((error) => console.error(error));
-
-            //lo que sigue es una función que ejecuto dentro de astros()
-
-            var valor;
-
         </script>
     </body>
 </html>
