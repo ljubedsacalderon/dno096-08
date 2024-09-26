@@ -24,7 +24,7 @@
             autoria.innerHTML = `Por ${nombre}`;
 
             async function astros() {
-                const consulta = await fetch("https://raw.githubusercontent.com/ljubedsacalderon/dno096-08/main/.phcode.json");
+                const consulta = await fetch("https://raw.githubusercontent.com/ljubedsacalderon/dno096-08/refs/heads/main/datos.json");
                 const data = await consulta.json();
                 console.log(data);
 
